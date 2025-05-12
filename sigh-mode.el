@@ -19,9 +19,7 @@
   "<left>" 'backward-sentence
   "<right>" 'forward-sentence
   "j" 'next-line
-  "k" 'previous-line
-  "<down>" 'next-line
-  "<up>" 'previous-line)
+  "k" 'previous-line)
 
 (defvar sigh-overlay nil
   "Overlay used to highlight the current sentence.")
