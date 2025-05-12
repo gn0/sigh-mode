@@ -1,6 +1,7 @@
 # Sigh Mode
 
-Sigh Mode is an Emacs minor mode to navigate the buffer sentence-by-sentence rather than character-by-character, and dynamically highlight the current sentence.
+Sigh Mode is an Emacs minor mode for **s**entence h**igh**lighting.
+With it, you can navigate the buffer sentence-by-sentence rather than character-by-character, and dynamically highlight the current sentence.
 
 ![Sigh Mode activated in Emacs 30.1](https://raw.githubusercontent.com/gn0/sigh-mode/main/screenshot.png)
 
