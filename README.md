@@ -15,6 +15,15 @@ If your Emacs configuration is in `~/.emacs.d`, then clone or download this GitH
   :commands (sigh-mode))
 ```
 
+Alternatively, starting with Emacs 30.1, you can also install Sigh Mode directly from this GitHub repository:
+
+```elisp
+(use-package sigh-mode
+  :vc (:url "https://github.com/gn0/sigh-mode.git"
+       :branch "main")
+  :commands (sigh-mode))
+```
+
 ## Usage
 
 Activate Sigh Mode by entering `M-x sigh-mode RET`.
