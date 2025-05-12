@@ -41,5 +41,6 @@ You can deactivate Sigh Mode by entering `M-x sigh-mode RET` again.
 ## Known issues
 
 If Sigh Mode is invoked in Evil, then `h`/`left` and `l`/`right` move the cursor character-by-character instead of sentence-by-sentence.
-This behavior is fixed by switching to Emacs state and back, by pressing `C-z` twice.
+With native compilation turned off, this misbehavior is fixed by switching to Emacs state and back, by pressing `C-z` twice.
+With native compilation turned on, the misbehavior is resolved after Emacs is restarted and Sigh Mode is loaded a second time.
 

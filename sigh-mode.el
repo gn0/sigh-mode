@@ -40,13 +40,21 @@ Keybindings:
          'post-command-hook 'sigh-highlight-sentence-at-point nil t)
         ;; Keybindings for Evil's normal state.
         (when (bound-and-true-p evil-mode)
-          (evil-define-key 'normal sigh-map
-            "h" 'evil-backward-sentence-begin
-            "l" 'evil-forward-sentence-begin
-            (kbd "<left>") 'evil-backward-sentence-begin
-            (kbd "<right>") 'evil-forward-sentence-begin
-            "j" 'next-line
-            "k" 'previous-line)))
+          (progn
+            (eval-when-compile (require 'evil-core))
+            (evil-define-key* 'normal sigh-map
+              "h" 'evil-backward-sentence-begin
+              "l" 'evil-forward-sentence-begin
+              (kbd "<left>") 'evil-backward-sentence-begin
+              (kbd "<right>") 'evil-forward-sentence-begin
+              "j" 'next-line
+              "k" 'previous-line)
+            ;; Prompt Evil to register the new keybindings.  Otherwise
+            ;; the user would need to initiate an Evil state transition
+            ;; for the keybindings to take effect, e.g., switch to Emacs
+            ;; state and back by pressing C-z twice.  Related issue:
+            ;; https://github.com/emacs-evil/evil/issues/301.
+            (evil-normalize-keymaps))))
     (progn
       (remove-hook
        'post-command-hook 'sigh-highlight-sentence-at-point t)
