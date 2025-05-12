@@ -12,18 +12,16 @@
 
 ;;; Code:
 
-(defvar sigh-mode-map
-  (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "h") 'backward-sentence)
-    (define-key map (kbd "l") 'forward-sentence)
-    (define-key map (kbd "<left>") 'backward-sentence)
-    (define-key map (kbd "<right>") 'forward-sentence)
-    (define-key map (kbd "j") 'next-line)
-    (define-key map (kbd "k") 'previous-line)
-    (define-key map (kbd "<down>") 'next-line)
-    (define-key map (kbd "<up>") 'previous-line)
-    map)
-  "Keymap for `sigh-mode'.")
+(defvar-keymap sigh-map
+  :doc "Keymap for `sigh-mode'."
+  "h" 'backward-sentence
+  "l" 'forward-sentence
+  "<left>" 'backward-sentence
+  "<right>" 'forward-sentence
+  "j" 'next-line
+  "k" 'previous-line
+  "<down>" 'next-line
+  "<up>" 'previous-line)
 
 (defvar sigh-overlay nil
   "Overlay used to highlight the current sentence.")
@@ -36,7 +34,7 @@ dynamically highlight the current one.  Keybindings:
 - `j' and <down>: move down by line.
 - `k' and <up>: move up by line."
   :lighter " Sigh"
-  :keymap sigh-mode-map
+  :keymap sigh-map
   (if (bound-and-true-p sigh-mode)
       (progn
         ;; Add hook for highlighting.
@@ -44,7 +42,7 @@ dynamically highlight the current one.  Keybindings:
          'post-command-hook 'sigh-highlight-sentence-at-point nil t)
         ;; Keybindings for Evil's normal state.
         (when (bound-and-true-p evil-mode)
-          (evil-define-key 'normal sigh-mode-map
+          (evil-define-key 'normal sigh-map
             "h" 'evil-backward-sentence-begin
             "l" 'evil-forward-sentence-begin
             (kbd "<left>") 'evil-backward-sentence-begin
