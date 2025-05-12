@@ -3,7 +3,7 @@
 ;; Author: Gabor Nyeki <gabor.nyeki@alumni.duke.edu>
 ;; Maintainer: Gabor Nyeki <gabor.nyeki@alumni.duke.edu>
 ;; URL: https://github.com/gn0/sigh-mode/
-;; Version: 1.0
+;; Version: 1.1
 ;; Package-requires: ((emacs "24.1"))
 
 ;;; License:
