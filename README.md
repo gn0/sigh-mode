@@ -6,7 +6,7 @@ Sigh Mode is an Emacs minor mode to navigate the buffer sentence-by-sentence rat
 
 ## Installation
 
-Emacs 29.1 and later versions ship with `use-package.el`, and this is the recommended method of installing Sigh Mode.
+Emacs 29.1 and later versions ship with [`use-package.el`](https://www.gnu.org/software/emacs/manual/html_node/use-package/index.html), and this is the recommended method of installing Sigh Mode.
 If your Emacs configuration is in `~/.emacs.d`, then clone or download this GitHub repository into the `~/.emacs.d/sigh-mode` directory, and add the following to your Emacs configuration file:
 
 ```elisp
