@@ -25,8 +25,8 @@
   "Overlay used to highlight the current sentence.")
 
 (define-minor-mode sigh-mode
-  "Minor mode to navigate the buffer sentence-by-sentence and
-dynamically highlight the current one.  Keybindings:
+  "Toggle sentence highlighting and sentence navigation in the current buffer.
+Keybindings:
 - `h' and <left>: move backward by sentence.
 - `l' and <right>: move forward by sentence.
 - `j' and <down>: move down by line.
