@@ -21,7 +21,7 @@
   "j" 'next-line
   "k" 'previous-line)
 
-(defvar sigh-overlay nil
+(defvar sigh--overlay nil
   "Overlay used to highlight the current sentence.")
 
 (define-minor-mode sigh-mode
@@ -58,19 +58,19 @@ Keybindings:
     (progn
       (remove-hook
        'post-command-hook 'sigh-highlight-sentence-at-point t)
-      (when sigh-overlay
-        (delete-overlay sigh-overlay)
-        (setq sigh-overlay nil)))))
+      (when sigh--overlay
+        (delete-overlay sigh--overlay)
+        (setq sigh--overlay nil)))))
 
 (defun sigh-highlight-sentence-at-point ()
   "Highlight the current sentence using an overlay."
-  (when sigh-overlay
-    (delete-overlay sigh-overlay))
+  (when sigh--overlay
+    (delete-overlay sigh--overlay))
   (let* ((start (save-excursion
                   (forward-sentence 1) (backward-sentence 1) (point)))
          (end (save-excursion (forward-sentence 1) (point))))
-    (setq sigh-overlay (make-overlay start end))
-    (overlay-put sigh-overlay 'face 'highlight)))
+    (setq sigh--overlay (make-overlay start end))
+    (overlay-put sigh--overlay 'face 'highlight)))
 
 (provide 'sigh-mode)
 ;;; sigh-mode.el ends here
