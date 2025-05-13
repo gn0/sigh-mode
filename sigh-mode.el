@@ -24,6 +24,9 @@
 (defvar sigh--overlay nil
   "Overlay used to highlight the current sentence.")
 
+(defvar sigh--buffer-was-read-only nil
+  "Buffer was read-only before activating `sigh-mode'.")
+
 (define-minor-mode sigh-mode
   "Toggle sentence highlighting and sentence navigation in the current buffer.
 Keybindings:
@@ -35,6 +38,10 @@ Keybindings:
   :keymap sigh-map
   (if (bound-and-true-p sigh-mode)
       (progn
+        ;; Switch buffer to read-only mode.
+        (setq sigh--buffer-was-read-only buffer-read-only)
+        (when (not buffer-read-only)
+          (read-only-mode 1))
         ;; Add hook for highlighting.
         (add-hook
          'post-command-hook 'sigh-highlight-sentence-at-point nil t)
@@ -56,6 +63,9 @@ Keybindings:
             ;; https://github.com/emacs-evil/evil/issues/301.
             (evil-normalize-keymaps))))
     (progn
+      (when (not sigh--buffer-was-read-only)
+        (read-only-mode -1))
+      (setq sigh--buffer-was-read-only nil)
       (remove-hook
        'post-command-hook 'sigh-highlight-sentence-at-point t)
       (when sigh--overlay
