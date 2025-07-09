@@ -46,9 +46,8 @@ Keybindings:
         (add-hook
          'post-command-hook 'sigh-highlight-sentence-at-point nil t)
         ;; Keybindings for Evil's normal state.
-        (when (bound-and-true-p evil-mode)
+        (when (and (require 'evil nil t) (bound-and-true-p evil-mode))
           (progn
-            (eval-when-compile (require 'evil-core))
             (evil-define-key* 'normal sigh-map
               "h" 'evil-backward-sentence-begin
               "l" 'evil-forward-sentence-begin
